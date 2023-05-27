@@ -1,0 +1,4 @@
+Puni naziv: Apple Computers
+Skracenica: APL
+Vrijednost: 324
+

@@ -1,0 +1,16 @@
+Ime: Ahmet
+Prezime: Patkovic
+ID: 1
+Kapital: 400
+
+
+Ime: Mateo
+Prezime: Susic
+ID: 2
+Kapital: 4000
+
+Ime: Davor
+Prezime: Susic
+ID: 4
+Kapital: 5000
+

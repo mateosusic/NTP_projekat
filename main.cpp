@@ -22,7 +22,7 @@ using namespace std;
 
 //Zadtak za mene
 //Napisati cu kod za dionice, tj razne opcije za ulaganje, moram napraviti RTC za mjerenje dobitaka i gubitaka
-//naci neki algoritam za Berzu. Napraviti takoder razne opcije, tj. razlicite dionice.
+//naci neki algoritam za Berzu. Napraviti takoder razne opcije.
 int main(){
 
 
