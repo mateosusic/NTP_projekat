@@ -4,14 +4,13 @@
 
 using namespace std;
 
-// Struktura dionice
+// Strukture
 struct Dionica {
     string puniNaziv;
     string skracenica;
     double vrijednost;
 };
 
-// Struktura korisnik
 struct Korisnik {
     string ime;
     string prezime;
