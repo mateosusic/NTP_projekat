@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -11,11 +12,14 @@ struct Dionica {
     double vrijednost;
 };
 
+
 struct Korisnik {
     string ime;
     string prezime;
     int id;
     double kapital;
+    string korisnickoIme;
+    string lozinka;
     vector<Dionica> dionice;
 };
 
@@ -34,9 +38,40 @@ Korisnik unosKorisnika() {
     cout << "Unesite pocetni kapital korisnika: ";
     cin >> noviKorisnik.kapital;
 
+    cout << "Unesite korisnicko ime: ";
+    cin >> noviKorisnik.korisnickoIme;
+
+    cout << "Unesite lozinku: ";
+    cin >> noviKorisnik.lozinka;
+
+    // Dodajte korisnika u datoteku "korisnici.txt"
+    ofstream datoteka("korisnici.txt", ios::app);
+    if (datoteka.is_open()) {
+        datoteka << noviKorisnik.korisnickoIme << " " << noviKorisnik.lozinka << endl;
+        datoteka.close();
+        cout << "Novi korisnik je uspjesno unesen." << endl;
+    } else {
+        cout << "Greska pri otvaranju datoteke." << endl;
+    }
+
     return noviKorisnik;
 }
 
+// Funkcija za provjeru korisnika
+bool provjeriKorisnika(const string& korisnickoIme, const string& lozinka) {
+    ifstream datoteka("korisnici.txt");
+    if (datoteka.is_open()) {
+        string unesenoKorisnickoIme, unesenaLozinka;
+        while (datoteka >> unesenoKorisnickoIme >> unesenaLozinka) {
+            if (unesenoKorisnickoIme == korisnickoIme && unesenaLozinka == lozinka) {
+                datoteka.close();
+                return true;
+            }
+        }
+        datoteka.close();
+    }
+    return false;
+}
 // Funkcija za unos nove dionice
 Dionica unosDionice() {
     Dionica novaDionica;
@@ -46,7 +81,6 @@ Dionica unosDionice() {
 
     cout << "Unesite skracenicu dionice: ";
     cin >> novaDionica.skracenica;
-
     cout << "Unesite vrijednost dionice: ";
     cin >> novaDionica.vrijednost;
 
@@ -65,7 +99,25 @@ void kupiDionicu(Korisnik& korisnik, const Dionica& dionica) {
 }
 
 int main() {
+
     Korisnik korisnik = unosKorisnika();
+    string korisnickoIme;
+    string lozinka;
+    cout << "Unesite korisnicko ime: ";
+    cin >> korisnickoIme;
+    cout << "Unesite lozinku: ";
+    cin >> lozinka;
+
+    if (provjeriKorisnika(korisnickoIme, lozinka)) {
+        cout << "Uspjesno ste se prijavili." << endl;
+        // Nastavak programa za prijavljenog korisnika
+        // ...
+    } else {
+        cout << "Pogresno korisnicko ime ili lozinka. Izlaz iz programa." << endl;
+        return 0;
+    }
+
+
     cout << "Dobrodosli, " << korisnik.ime << " " << korisnik.prezime << "!" << endl;
     cout << "Vas pocetni kapital: " << korisnik.kapital << endl;
 
@@ -165,7 +217,5 @@ int main() {
                 break;
         }
     } while (opcija != 0);
-
     return 0;
 }
-
