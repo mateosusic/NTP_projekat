@@ -2,3 +2,8 @@ Puni naziv: Apple Computers
 Skracenica: APL
 Vrijednost: 324
 
+Puni naziv: Microsoft Computer
+Skracenica: MSFT
+Vrijednost: 134
+
+

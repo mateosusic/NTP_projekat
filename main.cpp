@@ -44,7 +44,7 @@ Korisnik unosKorisnika() {
     cout << "Unesite lozinku: ";
     cin >> noviKorisnik.lozinka;
 
-    // Dodajte korisnika u datoteku "korisnici.txt"
+    // Dodaje korisnika u datoteku "korisnici.txt"
     ofstream datoteka("korisnici.txt", ios::app);
     if (datoteka.is_open()) {
         datoteka << noviKorisnik.korisnickoIme << " " << noviKorisnik.lozinka << endl;
@@ -72,6 +72,80 @@ bool provjeriKorisnika(const string& korisnickoIme, const string& lozinka) {
     }
     return false;
 }
+// Funkcija za dodavanje kapitala korisniku
+void dodajKapital(Korisnik& korisnik) {
+    double dodatniKapital;
+    cout << "Unesite iznos kapitala za dodavanje: ";
+    cin >> dodatniKapital;
+    korisnik.kapital += dodatniKapital;
+
+    // Ažurirajte korisnika u datoteci "korisnici.txt"
+    ifstream datoteka("korisnici.txt");
+    ofstream privremenaDatoteka("privremeno.txt");
+    if (datoteka.is_open() && privremenaDatoteka.is_open()) {
+        string korisnickoIme, lozinka, kapital;
+        while (datoteka >> korisnickoIme >> lozinka >> kapital) {
+            if (korisnickoIme == korisnik.korisnickoIme && lozinka == korisnik.lozinka) {
+                privremenaDatoteka << korisnickoIme << " " << lozinka << " " << korisnik.kapital << endl;
+            } else {
+                privremenaDatoteka << korisnickoIme << " " << lozinka << " " << kapital << endl;
+            }
+        }
+        datoteka.close();
+        privremenaDatoteka.close();
+        remove("korisnici.txt");
+        rename("privremeno.txt", "korisnici.txt");
+        cout << "Kapital je uspjesno dodan." << endl;
+    } else {
+        cout << "Greska pri otvaranju datoteke." << endl;
+    }
+}
+
+// Funkcija za prodaju dionica
+void prodajaDionica(Korisnik& korisnik) {
+    if (korisnik.dionice.empty()) {
+        cout << "Korisnik nema dionica za prodaju." << endl;
+        return;
+    }
+
+    cout << "Dostupne dionice za prodaju:" << endl;
+    for (int i = 0; i < korisnik.dionice.size(); i++) {
+        cout << i + 1 << ". " << korisnik.dionice[i].puniNaziv << " (" << korisnik.dionice[i].skracenica << ")" << endl;
+    }
+
+    int index;
+    cout << "Unesite redni broj dionice koju želite prodati: ";
+    cin >> index;
+
+    if (index >= 1 && index <= korisnik.dionice.size()) {
+        Dionica prodanaDionica = korisnik.dionice[index - 1];
+        korisnik.dionice.erase(korisnik.dionice.begin() + (index - 1));
+        korisnik.kapital += prodanaDionica.vrijednost;
+
+        // Ažurirajte korisnika u datoteci "korisnici.txt"
+        ifstream datoteka("korisnici.txt");
+        ofstream privremenaDatoteka("privremeno.txt");
+        if (datoteka.is_open() && privremenaDatoteka.is_open()) {
+            string korisnickoIme, lozinka, kapital;
+            while (datoteka >> korisnickoIme >> lozinka >> kapital) {
+                if (korisnickoIme == korisnik.korisnickoIme && lozinka == korisnik.lozinka) {
+                    privremenaDatoteka << korisnickoIme << " " << lozinka << " " << korisnik.kapital << endl;
+                } else {
+                    privremenaDatoteka << korisnickoIme << " " << lozinka << " " << kapital << endl;
+                }
+            }
+            datoteka.close();
+            privremenaDatoteka.close();
+            remove("korisnici.txt");
+            rename("privremeno.txt", "korisnici.txt");
+            cout << "Dionica je uspjesno prodana." << endl;
+        } else {
+            cout << "Greska pri otvaranju datoteke." << endl;
+        }
+    } else {
+        cout << "Nevažeći redni broj dionice." << endl;
+    }
+}
 // Funkcija za unos nove dionice
 Dionica unosDionice() {
     Dionica novaDionica;
@@ -97,10 +171,23 @@ void kupiDionicu(Korisnik& korisnik, const Dionica& dionica) {
         cout << "Nemate dovoljno sredstava za kupnju dionice." << endl;
     }
 }
+void ispisDionica(const Korisnik& korisnik) {
+    cout << "----- Ispis dionica -----" << endl;
+    if (korisnik.dionice.empty()) {
+        cout << "Korisnik nema dionica." << endl;
+        return;
+    }
+    cout << setw(15) << left << "Puni naziv" << setw(10) << left << "Skracenica" << setw(10) << right << "Vrijednost" << endl;
+
+    for (const Dionica& dionica : korisnik.dionice) {
+        cout << setw(15) << left << dionica.puniNaziv << setw(10) << left << dionica.skracenica << setw(10) << right << fixed << setprecision(2) << dionica.vrijednost << endl;
+    }
+}
+
 
 int main() {
 
-    Korisnik korisnik = unosKorisnika();
+    Korisnik korisnik ;
     string korisnickoIme;
     string lozinka;
     cout << "Unesite korisnicko ime: ";
@@ -108,14 +195,80 @@ int main() {
     cout << "Unesite lozinku: ";
     cin >> lozinka;
 
-    if (provjeriKorisnika(korisnickoIme, lozinka)) {
-        cout << "Uspjesno ste se prijavili." << endl;
-        // Nastavak programa za prijavljenog korisnika
-        // ...
-    } else {
-        cout << "Pogresno korisnicko ime ili lozinka. Izlaz iz programa." << endl;
-        return 0;
-    }
+//    // Funkcija za dodavanje kapitala korisniku
+//    void dodajKapital(Korisnik& korisnik){
+//        double dodatniKapital;
+//        cout << "Unesite iznos kapitala za dodavanje: ";
+//        cin >> dodatniKapital;
+//        korisnik.kapital += dodatniKapital;
+//
+//        // Ažurirajte korisnika u datoteci "korisnici.txt"
+//        ifstream datoteka("korisnici.txt");
+//        ofstream privremenaDatoteka("privremeno.txt");
+//        if (datoteka.is_open() && privremenaDatoteka.is_open()) {
+//            string korisnickoIme, lozinka, kapital;
+//            while (datoteka >> korisnickoIme >> lozinka >> kapital) {
+//                if (korisnickoIme == korisnik.korisnickoIme && lozinka == korisnik.lozinka) {
+//                    privremenaDatoteka << korisnickoIme << " " << lozinka << " " << korisnik.kapital << endl;
+//                } else {
+//                    privremenaDatoteka << korisnickoIme << " " << lozinka << " " << kapital << endl;
+//                }
+//            }
+//            datoteka.close();
+//            privremenaDatoteka.close();
+//            remove("korisnici.txt");
+//            rename("privremeno.txt", "korisnici.txt");
+//            cout << "Kapital je uspjesno dodan." << endl;
+//        } else {
+//            cout << "Greska pri otvaranju datoteke." << endl;
+//        }
+//    }
+//
+//// Funkcija za prodaju dionica
+//    void prodajaDionica(Korisnik& korisnik){
+//        if (korisnik.dionice.empty()) {
+//            cout << "Korisnik nema dionica za prodaju." << endl;
+//            return;
+//        }
+//
+//        cout << "Dostupne dionice za prodaju:" << endl;
+//        for (int i = 0; i < korisnik.dionice.size(); i++) {
+//            cout << i + 1 << ". " << korisnik.dionice[i].puniNaziv << " (" << korisnik.dionice[i].skracenica << ")" << endl;
+//        }
+//
+//        int index;
+//        cout << "Unesite redni broj dionice koju želite prodati: ";
+//        cin >> index;
+//
+//        if (index >= 1 && index <= korisnik.dionice.size()) {
+//            Dionica prodanaDionica = korisnik.dionice[index - 1];
+//            korisnik.dionice.erase(korisnik.dionice.begin() + (index - 1));
+//            korisnik.kapital += prodanaDionica.vrijednost;
+//
+//            // Ažurirajte korisnika u datoteci "korisnici.txt"
+//            ifstream datoteka("korisnici.txt");
+//            ofstream privremenaDatoteka("privremeno.txt");
+//            if (datoteka.is_open() && privremenaDatoteka.is_open()) {
+//                string korisnickoIme, lozinka, kapital;
+//                while (datoteka >> korisnickoIme >> lozinka >> kapital) {
+//                    if (korisnickoIme == korisnik.korisnickoIme && lozinka == korisnik.lozinka) {
+//                        privremenaDatoteka << korisnickoIme << " " << lozinka << " " << korisnik.kapital << endl;
+//                    } else {
+//                        privremenaDatoteka << korisnickoIme << " " << lozinka << " " << kapital << endl;
+//                    }
+//                }
+//                datoteka.close();
+//                privremenaDatoteka.close();
+//                remove("korisnici.txt");
+//                rename("privremeno.txt", "korisnici.txt");
+//                cout << "Dionica je uspjesno prodana." << endl;
+//            } else {
+//                cout << "Greska pri otvaranju datoteke." << endl;
+//            }
+//        } else {
+//            cout << "Nevažeći redni broj dionice." << endl;
+//        }
+//    }
 
 
     cout << "Dobrodosli, " << korisnik.ime << " " << korisnik.prezime << "!" << endl;
@@ -128,6 +281,7 @@ int main() {
         cout << "1. Unos nove dionice" << endl;
         cout << "2. Kupovina dionica" << endl;
         cout << "3. Ispis svih dionica" << endl;
+        cout << "4. Dodaj kapital" << endl;
         cout << "0. Izlaz iz programa" << endl;
         cout << "----------------" << endl;
         cout << "Unesite broj opcije: ";
@@ -199,14 +353,14 @@ int main() {
                 ifstream datoteka("dionice.txt");
                 if (datoteka.is_open()) {
                     string linija;
-                    cout << "----- Popis svih dionica -----" << endl;
-                    while (getline(datoteka, linija)) {
-                        cout << linija << endl;
-                    }
-                    datoteka.close();
+                    ispisDionica(korisnik);
                 } else {
                     cout << "Greska pri otvaranju datoteke." << endl;
                 }
+                break;
+            }
+            case 4: {
+                dodajKapital(korisnik);
                 break;
             }
             case 0:
