@@ -6,7 +6,7 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.23"
@@ -15,7 +15,8 @@
 					"source" : ".",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -30,7 +31,8 @@
 					"name" : "untitled11",
 					"targetIndexes" : 
 					[
-						0
+						0,
+						1
 					]
 				}
 			],
@@ -38,8 +40,15 @@
 			[
 				{
 					"directoryIndex" : 0,
+					"id" : "prvi::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-prvi-Debug-beb8fdab9f0bbcb4b7fe.json",
+					"name" : "prvi",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
 					"id" : "untitled11::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-untitled11-Debug-b0b301b596763cde0b39.json",
+					"jsonFile" : "target-untitled11-Debug-57b7ab1dd3e414b7e22e.json",
 					"name" : "untitled11",
 					"projectIndex" : 0
 				}
@@ -49,8 +58,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/mateosusic/CLionProjects/untitled11/cmake-build-debug",
-		"source" : "/Users/mateosusic/CLionProjects/untitled11"
+		"build" : "C:/Users/DT User/NTP_projekat/cmake-build-debug",
+		"source" : "C:/Users/DT User/NTP_projekat"
 	},
 	"version" : 
 	{
