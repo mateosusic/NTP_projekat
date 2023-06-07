@@ -2,8 +2,145 @@ Puni naziv: Apple Computers
 Skracenica: APL
 Vrijednost: 324
 
-Puni naziv: Microsoft Computer
-Skracenica: MSFT
-Vrijednost: 134
+Puni naziv: Google Inc.
+Skracenica: GOOGL
+Vrijednost: 245
+
+Puni naziv: Amazon.com, Inc.
+Skracenica: AMZN
+Vrijednost: 1880
+
+Puni naziv: Facebook, Inc.
+Skracenica: FB
+Vrijednost: 380
+
+Puni naziv: Tesla, Inc.
+Skracenica: TSLA
+Vrijednost: 700
+
+Puni naziv: Netflix, Inc.
+Skracenica: NFLX
+Vrijednost: 530
+
+Puni naziv: Intel Corporation
+Skracenica: INTC
+Vrijednost: 55
+
+Puni naziv: NVIDIA Corporation
+Skracenica: NVDA
+Vrijednost: 650
+
+Puni naziv: IBM
+Skracenica: IBM
+Vrijednost: 130
+
+Puni naziv: Adobe Inc.
+Skracenica: ADBE
+Vrijednost: 520
+
+Puni naziv: PayPal Holdings, Inc.
+Skracenica: PYPL
+Vrijednost: 220
+
+Puni naziv: Cisco Systems, Inc.
+Skracenica: CSCO
+Vrijednost: 60
+
+Puni naziv: Oracle Corporation
+Skracenica: ORCL
+Vrijednost: 80
+
+Puni naziv: Qualcomm Incorporated
+Skracenica: QCOM
+Vrijednost: 140
+
+Puni naziv: AT&T Inc.
+Skracenica: T
+Vrijednost: 30
+
+Puni naziv: Verizon Communications Inc.
+Skracenica: VZ
+Vrijednost: 50
+
+Puni naziv: Walmart Inc.
+Skracenica: WMT
+Vrijednost: 150
+
+Puni naziv: Coca-Cola Company
+Skracenica: KO
+Vrijednost: 55
+
+Puni naziv: PepsiCo, Inc.
+Skracenica: PEP
+Vrijednost: 140
+
+Puni naziv: McDonald's Corporation
+Skracenica: MCD
+Vrijednost: 230
+
+Puni naziv: The Walt Disney Company
+Skracenica: DIS
+Vrijednost: 180
+
+Puni naziv: Johnson & Johnson
+Skracenica: JNJ
+Vrijednost: 170
+
+Puni naziv: Procter & Gamble Company
+Skracenica: PG
+Vrijednost: 120
+
+Puni naziv: Visa Inc.
+Skracenica: V
+Vrijednost: 250
+
+Puni naziv: Mastercard Incorporated
+Skracenica: MA
+Vrijednost: 350
+
+Puni naziv: Coca-Cola European Partners plc
+Skracenica: CCEP
+Vrijednost: 50
+
+Puni naziv: Twitter, Inc.
+Skracenica: TWTR
+Vrijednost: 60
+
+Puni naziv: Alibaba Group Holding Limited
+Skracenica: BABA
+Vrijednost: 190
+
+Puni naziv: Intel Corporation
+Skracenica: INTC
+Vrijednost: 55
+
+Puni naziv: Zoom Video Communications, Inc.
+Skracenica: ZM
+Vrijednost: 320
+
+Puni naziv: Spotify Technology S.A.
+Skracenica: SPOT
+Vrijednost: 280
+
+Puni naziv: General Electric Company
+Skracenica: GE
+Vrijednost: 12
+
+Puni naziv: Airbnb, Inc.
+Skracenica: ABNB
+Vrijednost: 0
+
+Puni naziv: Ford Motor Company
+Skracenica: F
+Vrijednost: 20
+
+Puni naziv: General Motors Company
+Skracenica: GM
+Vrijednost: 55
+
+Puni naziv: Nike, Inc.
+Skracenica: NKE
+Vrijednost: 0
+
 
 

@@ -15,3 +15,9 @@ Kapital: 5000
 
 Mateo 1234
 Mateo 1234
+Mateo
+1234
+10000
+Vildana
+9999
+8000
