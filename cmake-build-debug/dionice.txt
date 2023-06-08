@@ -136,7 +136,7 @@ Vrijednost: 20
 
 Puni naziv: General Motors Company
 Skracenica: GM
-Vrijednost: 55
+Vrijednost: 0
 
 Puni naziv: Nike, Inc.
 Skracenica: NKE
